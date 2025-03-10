@@ -2,6 +2,16 @@
 
 
 {% block content %}
+    {% if request.user.is_authenticated %}
+        <h1>Hello {{ request.user.username }}</h1>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
         <ul>
             {% for task in object_list %} 
             <!-- replaced tasks to object_list-->

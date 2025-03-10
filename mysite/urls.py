@@ -21,4 +21,5 @@ urlpatterns = [
     #namespace is the same as app_name in app folder urls.py
     path('', include('home.urls', namespace='home')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
